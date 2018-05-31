@@ -31,6 +31,24 @@ Header section
 Body section
 ***************************/
 
+/* home page */
+.main-content {
+    margin: 1em 0;
+    padding: 0 1em;
+}
+
+.form-control, .btn {
+    display: inline-block;
+}
+.form-control {
+    margin-right: 15px;
+}
+
+/* query page */
+.query-component-contanier {
+    margin-top: 1em;
+}
+
 /***************************
 Animations section
 ***************************/
