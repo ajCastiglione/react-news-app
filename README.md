@@ -15,6 +15,7 @@ Run the command ``` npm start ``` - this will serve the application on localhost
 ## Dependencies
 <ul>
 <li>React</li>
+<li>React Router Dom</li>
 <li>Gulp</li>
 <li>News API</li>
 </ul>
