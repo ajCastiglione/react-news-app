@@ -6,7 +6,9 @@ This is a SPA to display current news based on a user's query, top stories, or o
 
 In order to run the development build of the project, you will need to do a few things.
 
-Open an account with News Api (I want to keep my api key private and their service is free. Sign up takes only a matter of seconds.).
+Open an account with News Api (I want to keep my api key private and their service is free. Sign up takes only a matter of seconds.). In order to avoid errors, you can copy the path I have or change the pathing for your instance. 
+
+The current path is: src/config/config.js with a const apiKey = YOUR_API_KEY_HERE.
 
 Run the command ``` npm install ```.
 
