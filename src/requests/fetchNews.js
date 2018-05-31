@@ -9,28 +9,44 @@ import { apiKey } from '../config/config';
 
 const headlines = 'https://newsapi.org/v2/top-headlines';
 const everything = 'https://newsapi.org/v2/everything';
-const headers = {
-    'Authorization': apiKey
-}
+const us = 'country=us';
+const headers = { 'Authorization': apiKey };
+export const cats = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'];
 let url;
 
-export const getQuery = (query, params) => {
-    if (params) { url = `${everything}?q=${query}&${params}`; }
-    url = `${everything}?q=${query}`; 
+export const getQuery = (query, params, pg) => {
+    if (!pg) pg = 1;
+    if (params !== 'none') { 
+        url = `${everything}?q=${query}&${params}&language=en&page=${pg}`;
+
+        return fetch(url, { headers })
+        .then(res => res.json())
+    }
+    url = `${everything}?q=${query}&language=en&page=${pg}`; 
 
     return fetch(url, { headers })
     .then(res => res.json())
 };
 
-export const getEverything = (query) => {
-    let url = `${everything}?q=${query}&apiKey=${apiKey}`; 
+export const getEverything = (query, pg) => {
+    if(!pg) pg = 1;
+    let url = `${everything}?q=${query}&language=en&page=${pg}`; 
+
     return fetch(url, { headers })
     .then(res => res.json())
 };
 
-export const getTopNews = (query, params) => {
-    if (params) { url = `${headlines}?q=${query}$${params}&apiKey=${apiKey}`; }
-    url = `${headlines}?q=${query}&apiKey=${apiKey}`; 
+export const getTopNews = (query, params, pg) => {
+    if(!pg) pg = 1;
+    if (params !== 'none') { 
+        url = `${headlines}?q=${query}&${params}&${us}&language=en&page=${pg}`;
+
+        return fetch(url, { headers })
+        .then(res => res.json())
+    }
+
+    url = `${headlines}?q=${query}&language=en&page=${pg}`; 
+
     return fetch(url, { headers })
     .then(res => res.json())
 };

@@ -19,7 +19,7 @@ Header section
     padding: 1em 0;
     img {
         max-width: 100px;
-        animation: app-logo-spin infinite 15s linear; 
+        animation: app-logo-spin infinite 15s linear;
     }
     h1 {
         display: inline-block;
@@ -32,21 +32,86 @@ Body section
 ***************************/
 
 /* home page */
+
 .main-content {
     margin: 1em 0;
     padding: 0 1em;
 }
 
-.form-control, .btn {
-    display: inline-block;
+.query-input-fields {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5em;
+    input {
+        width: 65%;
+    }
+    a {
+        width: 30%;
+    }
 }
-.form-control {
-    margin-right: 15px;
+
+.query-params-title {
+    padding-bottom: 10px;
+    font-size: 1.5em;
+    span {
+        position: relative;
+        color: $blue;
+        text-transform: capitalize;
+        margin: 0.5em 0;
+        padding-bottom: 10px;
+        &:after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 90%;
+            background-color: $blue;
+            height: 2px;
+            content: '';
+        }
+    }
 }
 
 /* query page */
+
 .query-component-contanier {
     margin-top: 1em;
+}
+
+.query-fetched-header {
+    h1 {
+        font-size: 2em;
+        text-transform: capitalize;
+    }
+    h3 {
+        text-transform: capitalize;
+    }
+}
+
+.query-fetched-content-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: space-between;
+}
+
+.query-fetched-content {
+    border: 2px solid $blue;
+    padding: 0.4em;
+    margin: 0.5em 0;
+    text-align: center;
+    img {
+        max-width: 250px;
+        max-height: 250px;
+        height: auto;
+        object-fit: cover;
+    }
+    .query-image-title {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
 }
 
 /***************************
