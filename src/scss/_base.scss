@@ -1,0 +1,45 @@
+/***************************
+Global
+***************************/
+
+html,
+body {
+    font-family: $font;
+}
+
+/***************************
+Header section
+***************************/
+
+.top-header {
+    background-color: $black;
+    color: $white;
+    display: flex;
+    align-items: center;
+    padding: 1em 0;
+    img {
+        max-width: 100px;
+        animation: app-logo-spin infinite 15s linear; 
+    }
+    h1 {
+        display: inline-block;
+        margin: 0;
+    }
+}
+
+/***************************
+Body section
+***************************/
+
+/***************************
+Animations section
+***************************/
+
+@keyframes app-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
