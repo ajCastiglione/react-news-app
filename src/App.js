@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   handleGoBack() {
-    this.setState({ category: 'none' }, () => sessionStorage.catTerm = this.state.category);
+    this.setState({ category: 'none' }, () => {sessionStorage.catTerm = this.state.category; sessionStorage.currentPage = 1;});
   }
 
   render() {

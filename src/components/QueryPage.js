@@ -10,7 +10,6 @@ export default class Query extends Component {
         cachedResults: sessionStorage.cachedResults? JSON.parse(sessionStorage.cachedResults) : [],
         pg: sessionStorage.currentPage ? Number(sessionStorage.currentPage) : 1,
         totalPgs: sessionStorage.totalPages ? sessionStorage.totalPages : '',
-        previousTerm: sessionStorage.previousTerm ? sessionStorage.previousTerm : '',
     }
 
     componentDidMount() {
