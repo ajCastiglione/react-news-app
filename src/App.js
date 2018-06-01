@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import logo from './logo.svg';
 import './App.css';
 import { Route, Link } from 'react-router-dom';
@@ -13,6 +14,7 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleGoBack = this.handleGoBack.bind(this);
+    this.scrollToBottom = this.scrollToBottom.bind(this);
   }
 
   state = {
@@ -41,6 +43,12 @@ class App extends Component {
 
   handleGoBack() {
     this.setState({ category: 'none' }, () => {sessionStorage.catTerm = this.state.category; sessionStorage.currentPage = 1;});
+  }
+
+  scrollToBottom() {
+    $('html,body').animate({
+      scrollTop: $(document).height() - $(window).height()
+    }, 1400);
   }
 
   render() {
@@ -88,8 +96,11 @@ class App extends Component {
 
         <Route exact path="/query" render={( props ) => (
           <section className="query-results-container">
-            <Link to="/" className="btn btn-primary" onClick={this.handleGoBack}><i className="fas fa-arrow-left"></i> Return</Link>
-            <QueryPage search={this.returnQuery} category={this.state.category} />
+            <div className="query-results-btn-container">
+              <Link to="/" className="btn btn-primary" onClick={this.handleGoBack}><i className="fas fa-arrow-left"></i> Return</Link>
+              <button className="btn btn-primary" onClick={this.scrollToBottom}>Bottom <i className="fas fa-arrow-down"></i></button>
+            </div>
+            <QueryPage />
           </section>
        )}/> {/* End of query page route */}
 

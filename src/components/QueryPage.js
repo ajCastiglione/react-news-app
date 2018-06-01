@@ -23,6 +23,7 @@ export default class Query extends Component {
     handleInfo = (news) => {
         let tempArr = news.articles.filter(source => source.source.name !== 'Dribbble.com');
         tempArr = tempArr.filter(source => source.source.name !== 'Bleepingcomputer.com');
+        tempArr = tempArr.filter(source => source.source.name !== 'Deviantart.com');
         this.setState({ totalPgs: news.totalResults/20, results: tempArr }, () => {sessionStorage.currentResults = JSON.stringify(this.state.results); sessionStorage.totalPages = this.state.totalPgs});
     }
 
@@ -82,8 +83,9 @@ export default class Query extends Component {
                         }
 
                         <div className="pagination-container">
-                            <div className="pagination-numbers">
-                                <p>Showing page {this.state.pg} of {Math.round(this.state.totalPgs)}</p>
+                            <p>Showing page {this.state.pg} of {Math.round(this.state.totalPgs)}</p>
+                            
+                            <div className="pagination-buttons container">
                                 <p className="prevBtn">{this.state.pg === 1 ? null : <button onClick={this.handlePageChangePrev}><i className="fas fa-arrow-left"></i> Previous</button>}</p>
                                 <p className="nextBtn">{this.state.pg === Math.round(this.state.totalPgs) ? null : <button onClick={this.handlePageChangeNext}>Next <i className="fas fa-arrow-right"></i></button> }</p>
                             </div>
