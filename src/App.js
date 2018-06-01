@@ -86,10 +86,10 @@ class App extends Component {
 
        )}/> {/* End of home page route */}
 
-        <Route path="/query" render={(props) => (
+        <Route exact path="/query" render={( props ) => (
           <section className="query-results-container">
             <Link to="/" className="btn btn-primary" onClick={this.handleGoBack}><i className="fas fa-arrow-left"></i> Return</Link>
-            <QueryPage search={this.props.query} category={this.state.category} />
+            <QueryPage search={this.returnQuery} category={this.state.category} />
           </section>
        )}/> {/* End of query page route */}
 

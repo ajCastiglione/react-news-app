@@ -7,19 +7,17 @@ export default class Query extends Component {
         term: sessionStorage.queryTerm === undefined ? this.props.search : sessionStorage.queryTerm,
         cat: sessionStorage.catTerm !== undefined ? sessionStorage.catTerm : this.props.category,
         results: sessionStorage.currentResults ? JSON.parse(sessionStorage.currentResults) : [],
+        cachedResults: sessionStorage.cachedResults? JSON.parse(sessionStorage.cachedResults) : [],
         pg: sessionStorage.currentPage ? Number(sessionStorage.currentPage) : 1,
         totalPgs: sessionStorage.totalPages ? sessionStorage.totalPages : '',
-    }
-
-    constructor(props) {
-        super(props);
-        console.log(this.props.search)
+        previousTerm: sessionStorage.previousTerm ? sessionStorage.previousTerm : '',
     }
 
     componentDidMount() {
-        if(this.props.search === sessionStorage.queryTerm) return;
-        this.setState({ pg: 1 });
         let { term, cat } = this.state;
+
+        if(this.state.pg !== 1) return;
+        this.setState({ pg: 1 });
         fetchNews.getQuery(term, cat).then(data => this.handleInfo(data))
     }
 
