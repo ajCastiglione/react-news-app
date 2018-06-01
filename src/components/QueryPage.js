@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as fetchNews from '../requests/fetchNews';
+import $ from 'jquery';
 
 export default class Query extends Component {
 
@@ -14,7 +15,6 @@ export default class Query extends Component {
 
     componentDidMount() {
         let { term, cat } = this.state;
-
         if(this.state.pg !== 1) return;
         this.setState({ pg: 1 });
         fetchNews.getQuery(term, cat).then(data => this.handleInfo(data))
@@ -29,13 +29,15 @@ export default class Query extends Component {
     handlePageChangeNext = () => {
         let { term, cat, pg } = this.state;
         this.setState({ pg: pg += 1 }, () => {sessionStorage.currentPage = this.state.pg; console.log(pg)});
-        fetchNews.getQuery(term, cat, pg).then(data => this.handleInfo(data))
+        fetchNews.getQuery(term, cat, pg).then(data => this.handleInfo(data));
+        $('html,body').animate({ scrollTop: 0 }, 1500);        
     }
 
     handlePageChangePrev = () => {
         let { term, cat, pg } = this.state;
         this.setState({ pg: pg -= 1 }, () => {sessionStorage.currentPage = this.state.pg; console.log(pg)});
-        fetchNews.getQuery(term, cat, pg).then(data => this.handleInfo(data))
+        fetchNews.getQuery(term, cat, pg).then(data => this.handleInfo(data));
+        $('html,body').animate({ scrollTop: 0 }, 1500); 
     }
 
     render() {
