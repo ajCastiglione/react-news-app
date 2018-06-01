@@ -75,6 +75,12 @@ Body section
 
 /* query page */
 
+.query-results-btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
 .query-component-contanier {
     margin-top: 1em;
 }
@@ -132,10 +138,23 @@ Body section
     }
 }
 
+.article-content {
+    word-break: break-all;
+}
+
 /* prev next btns */
 
 .pagination-container {
     width: 100%;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.pagination-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .prevBtn,
@@ -161,6 +180,7 @@ Body section
         padding: 0 5px;
     }
 }
+
 
 /***************************
 Animations section
