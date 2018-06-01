@@ -18,7 +18,7 @@ export const getQuery = (query, params, pg) => {
     if (!pg) pg = 1;
     if (params !== 'none') { 
         url = `${everything}?q=${query}&${params}&language=en&page=${pg}`;
-
+        console.log(url)
         return fetch(url, { headers })
         .then(res => res.json())
     }

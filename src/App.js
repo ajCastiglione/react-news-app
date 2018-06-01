@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Route, Link } from 'react-router-dom';
-import Query from './components/QueryComp';
+import QueryPage from './components/QueryPage';
 import * as fetchNews from './requests/fetchNews';
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
 
   handleInput(e) {
     let { value } = e.target;
-    this.setState({ query: value, warning: false }, () => sessionStorage.queryTerm = this.state.query);
+    this.setState({ query: value, warning: false }, () => { sessionStorage.queryTerm = this.state.query; });
   }
 
   handleClick(e) {
@@ -86,10 +86,10 @@ class App extends Component {
 
        )}/> {/* End of home page route */}
 
-        <Route path="/query" render={() => (
+        <Route path="/query" render={(props) => (
           <section className="query-results-container">
             <Link to="/" className="btn btn-primary" onClick={this.handleGoBack}><i className="fas fa-arrow-left"></i> Return</Link>
-            <Query search={this.state.query} category={this.state.category} />
+            <QueryPage search={this.props.query} category={this.state.category} />
           </section>
        )}/> {/* End of query page route */}
 
