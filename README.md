@@ -30,4 +30,8 @@ Don't have a list yet. I will figure this out as I build it. The intention is to
 
 Dev started today - 5/31/2018.
 
-Currently building out the functionality and tie-ins with the News API.
+<ul>
+<li>Got the query page working properly. Has pagination, remembers pg through reload, scrolls back to top on button press, allows paramters and works with pagination still.</li>
+<li>Need to build page template for top headlines / allow other searches</li>
+<li>Need to redesign landing page to have options for different types of searches</li>
+</ul>
