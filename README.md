@@ -31,7 +31,8 @@ Don't have a list yet. I will figure this out as I build it. The intention is to
 Dev started today - 5/31/2018.
 
 <ul>
+<li>Need to redesign landing page to have options for different types of searches</li>
 <li>Got the query page working properly. Has pagination, remembers pg through reload, scrolls back to top on button press, allows paramters and works with pagination still.</li>
 <li>Need to build page template for top headlines / allow other searches</li>
-<li>Need to redesign landing page to have options for different types of searches</li>
+<li>Need to start building the rest of the SPA. Currently only has a search for everthing.</li>
 </ul>
