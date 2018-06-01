@@ -65,7 +65,7 @@ Body section
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 90%;
+            width: 100%;
             background-color: $blue;
             height: 2px;
             content: '';
@@ -101,7 +101,9 @@ Body section
     padding: 0.4em;
     margin: 0.5em 0;
     text-align: center;
+    width: 100%;
     img {
+        width: 100%;
         max-width: 250px;
         max-height: 250px;
         height: auto;
@@ -110,7 +112,53 @@ Body section
     .query-image-title {
         display: flex;
         flex-wrap: wrap;
-        align-items: stretch;
+        align-items: center;
+        border-bottom: 2px solid $black;
+        padding-bottom: 5px;
+    }
+    .read-more-btn {
+        display: inline-block;
+        text-decoration: none;
+        color: $white;
+        background-color: $blue;
+        border: 2px solid $blue;
+        border-radius: 5px;
+        padding: 5px 10px;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: transparent;
+            color: $blue;
+        }
+    }
+}
+
+/* prev next btns */
+
+.pagination-container {
+    width: 100%;
+}
+
+.prevBtn,
+.nextBtn {
+    display: inline-block;
+
+    button {
+        display: flex;
+        align-items: center;
+        background-color: $black;
+        color: $blue;
+        border: 2px solid $black;
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin: 1%;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: $white;
+            color: $black;
+        }
+    }
+    i {
+        padding: 0 5px;
     }
 }
 
