@@ -3,49 +3,17 @@ import $ from 'jquery';
 import logo from './logo.svg';
 import './App.css';
 import { Route, Link } from 'react-router-dom';
+import QuerySearch from './components/QuerySearch';
 import QueryPage from './components/QueryPage';
-import * as fetchNews from './requests/fetchNews';
+import TopNews from './components/TopNews';
 
 class App extends Component {
 
-  constructor() {
-    super();
-    this.handleInput = this.handleInput.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
-    this.handleGoBack = this.handleGoBack.bind(this);
-    this.scrollToBottom = this.scrollToBottom.bind(this);
-  }
-
-  state = {
-    query: '',
-    category: 'none',
-    warning: false,
-  }
-
-  handleInput(e) {
-    let { value } = e.target;
-    this.setState({ query: value, warning: false }, () => { sessionStorage.queryTerm = this.state.query; });
-  }
-
-  handleClick(e) {
-    if(this.state.query === '') {
-      e.preventDefault();
-    this.setState({ warning: true });
-    }
-    this.setState({ query: '' });
-  }
-
-  handleSelect(e) {
-    let { value } = e.target
-    this.setState({ category: value }, () => sessionStorage.catTerm = this.state.category);
-  }
-
-  handleGoBack() {
+  handleGoBack = () => {
     this.setState({ category: 'none' }, () => {sessionStorage.catTerm = this.state.category; sessionStorage.currentPage = 1;});
   }
 
-  scrollToBottom() {
+  scrollToBottom = () => {
     $('html,body').animate({
       scrollTop: $(document).height() - $(window).height()
     }, 1400);
@@ -57,52 +25,65 @@ class App extends Component {
         <header className="App-header">
           
           <div className="top-header">
-            <img src={logo} className="App-logo" alt="logo" />
+            <Link to="/">
+              <img src={logo} className="App-logo" alt="logo" />
+            </Link>
             <h1 className="App-title">React News</h1>
           </div>
           
         </header>
         
       <section className="main-content">
+
+      <Route exact path="/" render={() => (
+        <article className="homepg-selection">
+          <h1>Query or Top Headlines?</h1>
+
+          <div className="btn-container">
+            <Link to="/query-search" className="btn-choice">custom search</Link>
+            <Link to="/top-news" className="btn-choice">top news today</Link>
+          </div>
+
+        </article>
+      )}/>
        
-       <Route exact path="/" render={() => (
-        <div className="query-input large-container">
-          
-          <div className="query-input-fields">
-            <input type="text" className="form-control" placeholder="Enter search term..." onChange={this.handleInput} />
-            <Link to="/query" className="btn btn-primary" onClick={this.handleClick}>Submit</Link>
+       <Route exact path="/query-search" render={() => (
+         <section className="query-search-parent">
+
+          <div className="query-search-btns query-results-btn-container">
+            <Link to="/" className="btn btn-primary" onClick={this.handleGoBack}><i className="fas fa-arrow-left"></i> Home</Link>
           </div>
 
-          <p className={this.state.warning ? "alert alert-warning" : null}>{this.state.warning ? 'Warning: Input can\'t be blank!' : null }</p>
+          <QuerySearch/>
 
-          <div className="query-params-fields">
-          <h2 className="query-params-title"><span>Select a category (optional)</span></h2>
-            <select name="category" onChange={this.handleSelect}>
-              <option value="none">None</option>
-              {
-                fetchNews.cats ?
-                fetchNews.cats.map((el, index) => (                
-                  <option key={index} value={el}>{el = el.charAt(0).toUpperCase() + el.substr(1)}</option>
-                ))
-                :
-                <option>No categories found</option>
-              }
-            </select>
-          </div>
+         </section>
+       )}/> 
+       {/* End of query search route */}
 
-        </div>
-
-       )}/> {/* End of home page route */}
-
-        <Route exact path="/query" render={( props ) => (
+        <Route exact path="/query" render={() => (
           <section className="query-results-container">
             <div className="query-results-btn-container">
-              <Link to="/" className="btn btn-primary" onClick={this.handleGoBack}><i className="fas fa-arrow-left"></i> Return</Link>
+              <Link to="/" className="btn btn-primary" onClick={this.handleGoBack}><i className="fas fa-arrow-left"></i> Home</Link>
               <button className="btn btn-primary" onClick={this.scrollToBottom}>Bottom <i className="fas fa-arrow-down"></i></button>
             </div>
             <QueryPage />
           </section>
-       )}/> {/* End of query page route */}
+       )}/> 
+       {/* End of query page route */}
+
+       <Route exact path="/top-news" render={() => (
+        <section className="topNews-results-container">
+
+        <div className="topNews-results-btn-container">
+          <Link to="/" className="btn btn-primary" onClick={this.handleGoBack}><i className="fas fa-arrow-left"></i> Home</Link>
+          <button className="btn btn-primary" onClick={this.scrollToBottom}>Bottom <i className="fas fa-arrow-down"></i></button>
+        </div>
+
+        <TopNews />        
+
+        </section>
+       )}/>
+       {/* End of top news route */}
 
       </section>
 

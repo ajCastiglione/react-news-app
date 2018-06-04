@@ -7,11 +7,11 @@ import { apiKey } from '../config/config';
 // page = int, used to navigate through pages if more than 1 is found.
 // example request to find articles based on a query, with a specific date range: https://newsapi.org/v2/everything?q=apple&from=2018-05-30&to=2018-05-30&sortBy=popularity&apiKey=API_KEY
 
+export const cats = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'];
 const headlines = 'https://newsapi.org/v2/top-headlines';
 const everything = 'https://newsapi.org/v2/everything';
 const us = 'country=us';
 const headers = { 'Authorization': apiKey };
-export const cats = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'];
 let url;
 
 export const getQuery = (query, params, pg) => {
