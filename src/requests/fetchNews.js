@@ -36,16 +36,10 @@ export const getEverything = (query, pg) => {
     .then(res => res.json())
 };
 
-export const getTopNews = (query, params, pg) => {
+export const getTopNews = (pg) => {
     if(!pg) pg = 1;
-    if (params !== 'none') { 
-        url = `${headlines}?q=${query}&${params}&${us}&language=en&page=${pg}`;
-
-        return fetch(url, { headers })
-        .then(res => res.json())
-    }
-
-    url = `${headlines}?q=${query}&language=en&page=${pg}`; 
+    
+    url = `${headlines}?language=en&${us}&page=${pg}`; 
 
     return fetch(url, { headers })
     .then(res => res.json())
