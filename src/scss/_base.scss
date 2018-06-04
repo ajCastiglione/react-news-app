@@ -17,6 +17,10 @@ Header section
     display: flex;
     align-items: center;
     padding: 1em 0;
+    a {
+        width: 100%;
+        max-width: 100px;
+    }
     img {
         max-width: 100px;
         animation: app-logo-spin infinite 15s linear;
@@ -36,6 +40,50 @@ Body section
 .main-content {
     margin: 1em 0;
     padding: 0 1em;
+}
+
+.homepg-selection {
+    h1 {
+        text-align: center;
+        font-weight: bold;
+        margin: 1em 0;
+    }
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-choice {
+    padding: 0.5em 1.5em;
+    color: $blue;
+    background-color: $black;
+    text-transform: capitalize;
+    font-size: 1.3em;
+    margin: 5px 15px;
+    cursor: pointer;
+    border: 2px solid $black;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        background-color: $white;
+        color: $black;
+        text-decoration: none;
+        border-color: $blue;
+    }
+}
+
+/* query search page */
+
+.query-pageTitle {
+    color: $blue;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.query-search-btns {
+    margin: 1em 0;
 }
 
 .query-input-fields {
@@ -73,7 +121,7 @@ Body section
     }
 }
 
-/* query page */
+/* query results page */
 
 .query-results-btn-container {
     display: flex;
@@ -81,6 +129,7 @@ Body section
     align-items: center;
     justify-content: space-between;
 }
+
 .query-component-contanier {
     margin-top: 1em;
 }
@@ -160,7 +209,6 @@ Body section
 .prevBtn,
 .nextBtn {
     display: inline-block;
-
     button {
         display: flex;
         align-items: center;
@@ -180,7 +228,6 @@ Body section
         padding: 0 5px;
     }
 }
-
 
 /***************************
 Animations section
