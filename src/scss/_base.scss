@@ -123,7 +123,8 @@ Body section
 
 /* query results page */
 
-.query-results-btn-container {
+.query-results-btn-container,
+.topNews-results-btn-container {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -149,6 +150,7 @@ Body section
     flex-wrap: wrap;
     align-content: stretch;
     justify-content: space-between;
+    word-wrap: break-word;
 }
 
 .query-fetched-content {
@@ -185,10 +187,6 @@ Body section
             color: $blue;
         }
     }
-}
-
-.article-content {
-    word-break: break-all;
 }
 
 /* prev next btns */
